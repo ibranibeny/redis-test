@@ -119,7 +119,7 @@ foreach ($cart as $sku => $qty) {
 </head>
 <body>
 <header>
-  <h1>Redis Shopping Cart (PHP)</h1>
+  <h1>Shopping Cart</h1>
   <div class="user">
     <strong>User:</strong> <?= htmlspecialchars($user['name'] ?? "Guest") ?>
     <span>(ID: <?= $userId ?>)</span>
