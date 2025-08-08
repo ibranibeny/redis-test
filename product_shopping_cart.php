@@ -58,6 +58,7 @@ print_r($redis->hGetAll($userKey));
 // ====== Display Cart with Product Info ======
 echo "\n Cart Contents:\n";
 $cart = $redis->hGetAll($cartKey);
+print_r($cart);
 $totalPrice = 0;
 
 foreach ($cart as $sku => $qty) {
