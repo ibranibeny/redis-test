@@ -11,14 +11,14 @@ $cartKey = "cart:$userId";
 // Simpan data user
 $redis->hMSet($userKey, [
     'name'  => 'Beny',
-    'email' => 'beny@example.com'
+    'email' => 'ibrani.beny@gmail.com'
 ]);
 
 // ====== Product Info ======
-// Simpan informasi produk (nama & harga)
+// Product Information
 $products = [
     'sku123' => ['name' => 'iPhone 15', 'price' => 1500],
-    'sku888' => ['name' => 'Samsung Galaxy S24', 'price' => 1200],
+    'sku888' => ['name' => 'MacBook Air', 'price' => 1200],
     'sku555' => ['name' => 'Xiaomi 14 Pro', 'price' => 900]
 ];
 
@@ -49,14 +49,14 @@ addToCart($redis, $cartKey, 'sku888', 1); // 1 Samsung
 addToCart($redis, $cartKey, 'sku555', 3); // 3 Xiaomi
 
 // Remove 1 iPhone
-removeFromCart($redis, $cartKey, 'sku123', 1);
+#removeFromCart($redis, $cartKey, 'sku123', 1);
 
 // ====== Display User Info ======
-echo "👤 User Info:\n";
+echo "User Info:\n";
 print_r($redis->hGetAll($userKey));
 
 // ====== Display Cart with Product Info ======
-echo "\n🛒 Cart Contents:\n";
+echo "\n Cart Contents:\n";
 $cart = $redis->hGetAll($cartKey);
 $totalPrice = 0;
 
@@ -68,5 +68,4 @@ foreach ($cart as $sku => $qty) {
     echo "{$productInfo['name']} ($sku): $qty pcs @ \${$productInfo['price']} each → Total: \${$itemTotal}\n";
 }
 
-echo "\n💰 Grand Total: \${$totalPrice}\n";
-
+echo "\nGrand Total: \${$totalPrice}\n";
